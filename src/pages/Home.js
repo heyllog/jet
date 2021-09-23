@@ -19,6 +19,7 @@ import { getRules, getCountries, getProducts, getCompanies } from '../api'
 const PermissionText = styled.p`
   margin: 0;
   color: ${({ type }) => {
+    // eslint-disable-next-line default-case
     switch (type) {
       case 'need approval':
         return 'orange'

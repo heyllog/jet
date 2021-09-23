@@ -1,7 +1,7 @@
 // TODO change to real requests
 const getCompanies = async () => {
   // const response = [...companies]
-  const response = await fetch('http://195.201.137.206:5000/companies')
+  const response = await fetch(`${process.env.REACT_APP_API_URL}companies`)
   const json = await response.json()
 
   return json._items.reduce((acc, company) => ({ ...acc, [company._id]: { ...company } }), {})
@@ -10,7 +10,7 @@ const getCompanies = async () => {
 
 const getProducts = async () => {
   // const response = [...products]
-  const response = await fetch('http://195.201.137.206:5000/products')
+  const response = await fetch(`${process.env.REACT_APP_API_URL}products`)
   const json = await response.json()
 
   return json._items.reduce((acc, product) => ({ ...acc, [product._id]: { ...product } }), {})
@@ -18,7 +18,7 @@ const getProducts = async () => {
 
 const getCountries = async () => {
   // const response = [...countries]
-  const response = await fetch('http://195.201.137.206:5000/countries')
+  const response = await fetch(`${process.env.REACT_APP_API_URL}countries`)
   const json = await response.json()
 
   return json._items.reduce((acc, country) => ({ ...acc, [country._id]: { ...country } }), {})
@@ -26,7 +26,7 @@ const getCountries = async () => {
 
 const getRules = async () => {
   // const response = [...rules]
-  const response = await fetch('http://195.201.137.206:5000/rules')
+  const response = await fetch(`${process.env.REACT_APP_API_URL}rules`)
   const json = await response.json()
 
   return json._items
