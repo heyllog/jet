@@ -1,15 +1,11 @@
-// TODO change to real requests
 const getCompanies = async () => {
-  // const response = [...companies]
   const response = await fetch(`${process.env.REACT_APP_API_URL}companies`)
   const json = await response.json()
 
   return json._items.reduce((acc, company) => ({ ...acc, [company._id]: { ...company } }), {})
-  // return response.reduce((acc, company) => ({ ...acc, [company.company_id]: { ...company } }), {})
 }
 
 const getProducts = async () => {
-  // const response = [...products]
   const response = await fetch(`${process.env.REACT_APP_API_URL}products`)
   const json = await response.json()
 
@@ -17,7 +13,6 @@ const getProducts = async () => {
 }
 
 const getCountries = async () => {
-  // const response = [...countries]
   const response = await fetch(`${process.env.REACT_APP_API_URL}countries`)
   const json = await response.json()
 
@@ -25,11 +20,23 @@ const getCountries = async () => {
 }
 
 const getRules = async () => {
-  // const response = [...rules]
   const response = await fetch(`${process.env.REACT_APP_API_URL}rules`)
   const json = await response.json()
 
   return json._items
 }
 
-export { getProducts, getRules, getCompanies, getCountries }
+// { country_id, product_id, company_id, permission }
+const postRule = async (ruleInfo) => {
+  const response = await fetch(`${process.env.REACT_APP_API_URL}rules`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json;charset=utf-8',
+    },
+    body: JSON.stringify(ruleInfo),
+  })
+
+  return response.ok
+}
+
+export { getProducts, getRules, getCompanies, getCountries, postRule }
